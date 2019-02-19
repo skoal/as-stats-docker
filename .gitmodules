@@ -1,0 +1,3 @@
+[submodule "AS-Stats"]
+	path = AS-Stats
+	url = https://github.com/skoal/AS-Stats
