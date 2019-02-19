@@ -1,8 +1,11 @@
-FROM alpine:latest
+FROM bitnami/minideb:stretch
 
-RUN apk add --no-cache supervisor nginx bash curl perl rrdtool make perl-rrd git php5-fpm ttf-dejavu tzdata && rm -rf /var/cache/apk/*
+RUN apt update
+RUN apt install -y supervisor nginx bash curl perl rrdtool make librrdtool-oo-perl git php-fpm ttf-dejavu tzdata 
 
-WORKDIR /root/
+# libfile-find-object-perl 
+
+WORKDIR /as-stats/
 
 RUN curl --location http://search.cpan.org/CPAN/authors/id/R/RC/RCLAMP/File-Find-Rule-0.34.tar.gz | tar -xzf - \
     && cd File-Find-Rule-0.34/ \
@@ -27,7 +30,7 @@ RUN git clone https://github.com/manuelkasper/AS-Stats.git
 RUN rm -Rf /var/www/localhost && \
     mv AS-Stats/www/* /var/www
 
-### NGINX + PHP5-FPM
+### NGINX + PHP-FPM
 RUN mkdir /run/nginx/
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
