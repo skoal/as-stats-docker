@@ -1,3 +1,6 @@
 [submodule "AS-Stats"]
 	path = AS-Stats
 	url = https://github.com/skoal/AS-Stats
+[submodule "files/perl-ip2as"]
+	path = files/perl-ip2as
+	url = https://github.com/JackSlateur/perl-ip2as
